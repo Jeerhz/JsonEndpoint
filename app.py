@@ -9,7 +9,7 @@ ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJub25jZSI6ImNSaS05M2Q1NWhtQ1hPNEdlTHkzN2FsbnRf
 
 url = "https://graph.microsoft.com/v1.0/sites/1b04792a-89a2-4d7e-905f-b6e907d37b65,29238cfc-18d8-4d0b-81e7-2cd5dc8894c7/drive/root:/Pilotage - Direction IT/Formatted_V4.json:/content"
 
-@app.route('/get-json', methods=['GET'])
+@app.route('', methods=['GET'])
 def get_json():
     headers = {
         "Authorization": f"Bearer {ACCESS_TOKEN}"
