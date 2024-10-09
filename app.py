@@ -15,7 +15,8 @@ def get_json():
         "Authorization": f"Bearer {ACCESS_TOKEN}"
     }
 
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers).content
+    print(response)
     response.raise_for_status()
     return response
 
