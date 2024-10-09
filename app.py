@@ -1,6 +1,6 @@
 import os
 import requests
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
@@ -15,10 +15,12 @@ def get_json():
         "Authorization": f"Bearer {ACCESS_TOKEN}"
     }
 
-    response = requests.get(url, headers=headers).content
-    print(response)
-    response.raise_for_status()
-    return response
+    try:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
+        return jsonify(response.json())
+    except requests.exceptions.RequestException as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
